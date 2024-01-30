@@ -2,14 +2,12 @@ package es.nextdigital.demo.Controller;
 
 import es.nextdigital.demo.Model.Cuenta;
 import es.nextdigital.demo.Model.Movimiento;
+import es.nextdigital.demo.Model.SolicitudRetirada;
 import es.nextdigital.demo.Service.CuentaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,6 +31,22 @@ public class CuentaController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(cuenta.getMovimientos(), HttpStatus.OK);
+    }
+
+    @PostMapping("/{tarjetaId}/sacar-dinero")
+    public ResponseEntity<String> sacarDineroDeCuenta(@PathVariable String tarjetaId, @RequestBody SolicitudRetirada solicitud) {
+        try {
+            double cantidad = solicitud.getDinero();
+            boolean resultado = cuentaService.sacarDineroDeCuenta(tarjetaId, cantidad);
+
+            if (resultado) {
+                return new ResponseEntity<>("Se ha realizado el retiro exitosamente.", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("No se pudo realizar el retiro debido a saldo insuficiente o límite de crédito excedido.", HttpStatus.BAD_REQUEST);
+            }
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error al procesar la solicitud: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }
