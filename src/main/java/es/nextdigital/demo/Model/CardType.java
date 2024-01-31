@@ -7,11 +7,11 @@ public enum CardType {
 
     private final String description;
 
-    CardType(String descripcion) {
-        this.description = descripcion;
+    CardType(String description) {
+        this.description = description;
     }
 
-    public String getDescripcion() {
+    public String getDescription() {
         return description;
     }
 }
