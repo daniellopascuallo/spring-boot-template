@@ -8,12 +8,12 @@ import java.util.Date;
 
 @Data
 @Document(collection = "movimientos")
-public class Movimiento {
+public class Movement {
     @Id
     private String id;
-    private TipoMovimiento tipoMovimiento;
-    private double cantidad;
-    private Date fecha;
-    private String descripcion;
-    private String cuentaId;
+    private MovementType movementType;
+    private double amount;
+    private Date date;
+    private String description;
+    private String accountId;
 }

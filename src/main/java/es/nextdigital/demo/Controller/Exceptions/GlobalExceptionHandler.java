@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(CuentaNoEncontradaException.class)
-    public ResponseEntity<String> handleCuentaNoEncontradaException(CuentaNoEncontradaException ex) {
+    @ExceptionHandler(AccountNotFoundException.class)
+    public ResponseEntity<String> handleAccountNotFoundException(AccountNotFoundException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(TarjetaNoAsociadaException.class)
-    public ResponseEntity<String> handleTarjetaNoAsociadaException(TarjetaNoAsociadaException ex) {
+    @ExceptionHandler(NonAttachedCardException.class)
+    public ResponseEntity<String> handleNonAttachedCardException(NonAttachedCardException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 

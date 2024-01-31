@@ -3,11 +3,11 @@ package es.nextdigital.demo.Model;
 import lombok.Data;
 
 @Data
-public class Usuario {
+public class User {
     private String id;
-    private String nombre;
-    private String apellido;
-    private String correo;
+    private String name;
+    private String surname;
+    private String email;
     private String password;
 }
 

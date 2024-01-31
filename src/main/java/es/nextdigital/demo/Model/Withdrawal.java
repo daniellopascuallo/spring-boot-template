@@ -3,7 +3,7 @@ package es.nextdigital.demo.Model;
 import lombok.Data;
 
 @Data
-public class SolicitudRetirada {
+public class Withdrawal {
 
-    private double dinero;
+    private double amount;
 }

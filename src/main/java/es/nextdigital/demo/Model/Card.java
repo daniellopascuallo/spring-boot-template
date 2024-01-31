@@ -6,14 +6,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @Document(collection = "tarjetas")
-public class Tarjeta {
+public class Card {
     @Id
     private String id;
-    private String numeroTarjeta;
-    private TipoTarjeta tipo;
-    private String cuentaId;
-    private double saldoDisponible;
-    private double limiteCredito;
-    private String bancoAsociado;
+    private String cardNumber;
+    private CardType type;
+    private String accountId;
+    private double availableFunds;
+    private double creditLimit;
+    private String bank;
 }
 
